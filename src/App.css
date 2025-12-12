@@ -1,0 +1,238 @@
+/* ------------------------------
+   GLOBAL THEME — RED × BLACK
+------------------------------ */
+:root {
+  --bg: #050505;
+  --bg-panel: #0d0d0d;
+  --muted: #b3b3b3;
+  --red: #ff1b1b;
+  --red-soft: #ff4444;
+  --red-dark: #7a0000;
+  --glow-red: rgba(255, 0, 0, 0.45);
+  --glow-red-strong: rgba(255, 0, 0, 0.75);
+}
+
+/* Base layout */
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Smooth transitions */
+* {
+  transition: 0.25s ease;
+}
+
+/* ------------------------------
+   NAVBAR (no JSX changes)
+------------------------------ */
+.neon-nav {
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--red-dark);
+  box-shadow: 0 0 18px var(--glow-red);
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 8px 16px;
+  margin-left: 8px;
+  border-radius: 6px;
+  color: var(--muted);
+}
+
+.nav-btn:hover {
+  border-color: var(--red);
+  color: white;
+  box-shadow: 0 0 12px var(--glow-red);
+}
+
+.nav-btn.active {
+  border-color: var(--red);
+  color: white;
+  background: rgba(255,0,0,0.12);
+  box-shadow: 0 0 14px var(--glow-red);
+}
+
+.nav-btn.primary {
+  background: var(--red);
+  color: white;
+  box-shadow: 0 0 15px var(--glow-red-strong);
+}
+
+/* Logo */
+.brand-accent {
+  color: var(--red);
+  font-weight: 700;
+}
+
+/* ------------------------------
+   SIDEBAR (no JSX changes)
+------------------------------ */
+.neon-sidebar {
+  background: var(--bg-panel);
+  border-right: 1px solid var(--red-dark);
+  box-shadow: 4px 0 20px -5px var(--glow-red);
+}
+
+.side-item {
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.side-item:hover {
+  background: rgba(255, 0, 0, 0.12);
+  color: white;
+}
+
+.side-item.on {
+  background: rgba(255,0,0,0.18);
+  color: var(--red);
+  border-left: 3px solid var(--red);
+  box-shadow: 0 0 12px var(--glow-red);
+}
+
+/* ------------------------------
+   HERO SECTION
+------------------------------ */
+.hero {
+  background: linear-gradient(135deg, #1a0000, #0a0000);
+  padding: 30px;
+  border-radius: 14px;
+  border: 1px solid var(--red-dark);
+  box-shadow: 0 0 25px var(--glow-red-strong);
+}
+
+.hero-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--red-soft);
+}
+
+.hero-sub {
+  color: #ffb3b3;
+}
+
+/* ------------------------------
+   CHIPS
+------------------------------ */
+.chip-row .chip {
+  background: var(--red-dark);
+  border: 1px solid var(--red);
+  padding: 7px 14px;
+  margin-right: 8px;
+  border-radius: 20px;
+  color: #ff9a9a;
+  cursor: pointer;
+}
+
+.chip-row .chip:hover {
+  background: var(--red);
+  color: black;
+  box-shadow: 0 0 15px var(--glow-red);
+}
+
+.chip-row .chip.outline {
+  background: transparent;
+  border: 1px solid var(--red);
+}
+
+.chip-row .chip.outline:hover {
+  background: var(--red);
+  color: black;
+}
+
+/* ------------------------------
+   FORMS (dark red cards)
+------------------------------ */
+.card-dark {
+  background: #0b0b0b;
+  border: 1px solid var(--red-dark);
+  box-shadow: 0 0 20px var(--glow-red);
+  border-radius: 12px;
+}
+
+.form-control, .form-select {
+  background: #111;
+  color: white;
+  border: 1px solid var(--red-dark);
+}
+
+.form-control:focus, .form-select:focus {
+  box-shadow: 0 0 10px var(--glow-red);
+  border-color: var(--red);
+}
+
+/* Neon Button */
+.btn-neon {
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+  box-shadow: 0 0 18px var(--glow-red-strong);
+}
+
+.btn-neon:hover {
+  background: #ff0000;
+  box-shadow: 0 0 30px var(--glow-red-strong);
+}
+
+/* ------------------------------
+   ITEM CARDS (Red neon border)
+------------------------------ */
+.neon-card {
+  background: #080808;
+  border: 1px solid var(--red-dark);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 18px var(--glow-red);
+}
+
+.neon-card .thumb-wrap img {
+  height: 190px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--red-dark);
+}
+
+.neon-card.completed {
+  opacity: 0.6;
+  border-color: #ff7070;
+}
+
+.neon-card:hover {
+  box-shadow: 0 0 22px var(--glow-red-strong);
+}
+
+/* Buttons on card */
+.neon-card .btn-outline-light:hover {
+  background: var(--red);
+  border-color: var(--red);
+  box-shadow: 0 0 12px var(--glow-red);
+}
+
+.btn-danger {
+  background: var(--red);
+  border: 1px solid var(--red-dark);
+}
+
+.btn-danger:hover {
+  background: #ff0000;
+  box-shadow: 0 0 14px var(--glow-red);
+}
+
+/* ------------------------------
+   FOOTER
+------------------------------ */
+.neon-footer {
+  background: var(--bg-panel);
+  border-top: 1px solid var(--red-dark);
+  box-shadow: 0 -2px 15px var(--glow-red);
+  text-align: center;
+}
