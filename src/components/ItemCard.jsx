@@ -1,35 +1,31 @@
-import { FaHeart, FaRegHeart, FaCheckCircle, FaTrash } from "react-icons/fa";
+import Rating from "./Rating";
 
-export default function ItemCard({ item, onToggleLike, onToggleComplete, onDelete }) {
+export default function ItemCard({
+  item,
+  watchlist,
+  toggleWatchlist,
+  onDetails
+}) {
+  const isSaved = watchlist?.some(i => i.id === item.id);
+
   return (
-    <div className="col-md-4">
-      <div className="card mb-4 shadow-sm">
+    <div className="item-card" onClick={onDetails}>
+      <img src={item.image} alt={item.title} />
 
-        <img 
-          src={item.image}
-          className="card-img-top"
-          alt="thumbnail"
-          style={{ height: "180px", objectFit: "cover" }}
-        />
+      <div className="card-overlay">
+        <h5>{item.title}</h5>
 
-        <div className="card-body">
-          <h5 className="card-title">{item.title}</h5>
-          <p className="badge bg-primary">{item.category}</p>
+        <Rating value={item.rating} />
 
-          <div className="mt-3 d-flex justify-content-between">
-            <button className="btn btn-outline-danger btn-sm" onClick={() => onToggleLike(item.id)}>
-              {item.liked ? <FaHeart /> : <FaRegHeart />}
-            </button>
-
-            <button className="btn btn-outline-success btn-sm" onClick={() => onToggleComplete(item.id)}>
-              <FaCheckCircle />
-            </button>
-
-            <button className="btn btn-outline-dark btn-sm" onClick={() => onDelete(item.id)}>
-              <FaTrash />
-            </button>
-          </div>
-        </div>
+        <button
+          className={`watch-btn ${isSaved ? "saved" : ""}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleWatchlist(item);
+          }}
+        >
+          {isSaved ? "✔ In Watchlist" : "+ Add to Watchlist"}
+        </button>
       </div>
     </div>
   );

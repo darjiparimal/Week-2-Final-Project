@@ -1,24 +1,29 @@
-// src/components/Footer.jsx
+import React from "react";
+import { FaGithub, FaInstagram, FaYoutube } from "react-icons/fa";
+
 export default function Footer() {
   return (
-    <footer
-      style={{
-        backgroundColor: "#000",       // black background
-        color: "#ff4d4d",              // red text
-        textAlign: "center",
-        padding: "15px 0",
-        fontSize: "16px",
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        width: "100%",
-        borderTop: "2px solid #ff4d4d", // red top border
-        zIndex: 100,
-      }}
-    >
-      <p style={{ margin: 0 }}>
-        © {new Date().getFullYear()} Anime World — Best platform for streaming.
-      </p>
+    <footer className="footer">
+      <h3>
+        ANIME <span>WORLD</span>
+      </h3>
+
+      <p>Discover • Watch • Save your favorite Anime & Movies</p>
+
+      <div className="footer-links">
+        <span>Home</span>
+        <span>Anime</span>
+        <span>Movies</span>
+        <span>Watchlist</span>
+      </div>
+
+      <div className="footer-social">
+        <a href="#"><FaGithub /></a>
+        <a href="#"><FaInstagram /></a>
+        <a href="#"><FaYoutube /></a>
+      </div>
+
+      <small>© 2025 Anime World — By Darji Parimal</small>
     </footer>
   );
 }

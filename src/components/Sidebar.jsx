@@ -1,25 +1,19 @@
-import React from "react";
-import { FaHome, FaFolder, FaInfoCircle } from "react-icons/fa";
-
-export default function Sidebar({ active, onSwitch, itemCount }) {
+export default function Sidebar({ open, closeSidebar, setSection, section }) {
   return (
-    <div className="sidebar-inner">
-      <h5 className="sidebar-title">Dashboard</h5>
-      <p className="small text-muted">Ready to streaming?</p>
+    <>
+      {/* Overlay */}
+      {open && <div className="overlay" onClick={closeSidebar}></div>}
 
-      <ul className="list-unstyled">
-        <li className={`side-item ${active==="Home"?"on":""}`} onClick={()=>onSwitch("Home")}><FaHome className="me-2"/> Home</li>
-        <li className={`side-item ${active==="Project"?"on":""}`} onClick={()=>onSwitch("Project")}><FaFolder className="me-2"/> Project</li>
-        <li className={`side-item ${active==="About"?"on":""}`} onClick={()=>onSwitch("About")}><FaInfoCircle className="me-2"/> About</li>
-      </ul>
+      <aside className={`sidebar ${open ? "open" : ""}`}>
+        <h3 className="side-title">Menu</h3>
 
-      <div className="mt-4">
-        <small className="text-muted">Tip: Add items in Project → Add Item</small>
-      </div>
-
-      <div className="mt-4 stats">
-        <div className="stat">Items <strong>{itemCount}</strong></div>
-      </div>
-    </div>
+        <ul>
+          <li className={section==="Home"?"active":""} onClick={() => {setSection("Home"); closeSidebar();}}>Home</li>
+          <li className={section==="Anime"?"active":""} onClick={() => {setSection("Anime"); closeSidebar();}}>Anime</li>
+          <li className={section==="Movies"?"active":""} onClick={() => {setSection("Movies"); closeSidebar();}}>Movies</li>
+          <li className={section==="Watchlist"?"active":""} onClick={() => {setSection("Watchlist"); closeSidebar();}}>Watchlist</li>
+        </ul>
+      </aside>
+    </>
   );
 }

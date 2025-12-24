@@ -1,17 +1,42 @@
 import React from "react";
+import { FaBars, FaSearch } from "react-icons/fa";
 
-export default function Navbar({ active, onSwitch }) {
+export default function Navbar({ section, setSection, toggleSidebar, searchQuery, setSearchQuery }) {
   return (
-    <nav className="neon-nav d-flex justify-content-between align-items-center px-4">
-      <div className="brand">
-        <span className="brand-accent">ANIME</span> • WORLD
-        <div className="brand-sub">Watch your favourite Contant.</div>
+    <nav className="neon-nav">
+      {/* LEFT */}
+      <div className="nav-left">
+        <button className="menu-btn" onClick={toggleSidebar}>
+          <FaBars />
+        </button>
+
+        <h2 className="brand" onClick={() => setSection("Home")}>
+          <span>ANIME</span> WORLD
+        </h2>
       </div>
 
-      <div className="nav-actions">
-        <button className={`nav-btn ${active==="Home"?"active":""}`} onClick={()=>onSwitch("Home")}>Home</button>
-        <button className={`nav-btn ${active==="About"?"active":""}`} onClick={()=>onSwitch("About")}>About</button>
-        <button className={`nav-btn ${active==="Project"?"primary":""}`} onClick={()=>onSwitch("Project")}>Project</button>
+      {/* CENTER SEARCH */}
+      <div className="nav-search">
+        <FaSearch className="search-icon" />
+        <input
+          type="text"
+          placeholder="Search anime or movies..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+
+      {/* RIGHT BUTTONS */}
+      <div className="nav-right">
+        {["Home", "Anime", "Movies", "Watchlist"].map(btn => (
+          <button
+            key={btn}
+            className={`nav-btn ${section === btn ? "active" : ""}`}
+            onClick={() => setSection(btn)}
+          >
+            {btn}
+          </button>
+        ))}
       </div>
     </nav>
   );
