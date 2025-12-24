@@ -1,6 +1,6 @@
 // src/data/animeData.js
 
-import naruto from "../assets/anime/naruto.jpg";
+import narutoImg from "../assets/anime/naruto.jpg";
 import onepiece from "../assets/anime/onepiece.jpg";
 import bleach from "../assets/anime/bleach.jpg";
 import aot from "../assets/anime/aot.jpg";
@@ -16,12 +16,12 @@ import chainsawman from "../assets/anime/chainsawman.jpg";
 import spyxfamily from "../assets/anime/spyxfamily.webp";
 import sololeveling from "../assets/anime/sololeveling.jpg";
 
-export const animeList = [
+export const animeData = [
   {
     id: "naruto",
     type: "anime",
     title: "Naruto",
-    image: naruto,
+    image: narutoImg,
     description: "A young ninja who dreams of becoming Hokage.",
     rating: 8.4,
     episodes: [
