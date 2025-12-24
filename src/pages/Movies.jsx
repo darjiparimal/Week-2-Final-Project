@@ -1,33 +1,33 @@
 import { useState } from "react";
 import { movies } from "../data/moviesData";
 import ItemCard from "../components/ItemCard";
-import VideoModal from "../components/VideoModal";
+import DetailsModal from "../components/DetailsModal";
 
-export default function Movies({ searchQuery, watchlist, toggleWatchlist }) {
-  const [activeVideo, setActiveVideo] = useState(null);
-
-  const filteredMovies = movies.filter(movie =>
-    movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+export default function Movies({ watchlist, toggleWatchlist }) {
+  const [selected, setSelected] = useState(null);
 
   return (
-    <>
+    <div className="main-content">
+      <h1>Movies</h1>
+
       <div className="grid">
-        {filteredMovies.map(movie => (
+        {movies.map((movie) => (
           <ItemCard
             key={movie.id}
             item={movie}
             watchlist={watchlist}
             toggleWatchlist={toggleWatchlist}
-            onPlay={(item) => item.video && setActiveVideo(item.video)}
+            onOpen={() => setSelected(movie)}
           />
         ))}
       </div>
 
-      <VideoModal
-        videoUrl={activeVideo}
-        close={() => setActiveVideo(null)}
-      />
-    </>
+      {selected && (
+        <DetailsModal
+          item={selected}
+          close={() => setSelected(null)}
+        />
+      )}
+    </div>
   );
 }

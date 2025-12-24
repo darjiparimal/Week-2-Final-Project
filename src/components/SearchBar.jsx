@@ -1,10 +1,8 @@
-import React from "react";
-import { FaSearch } from "react-icons/fa";
+// src/components/SearchBar.jsx
 
 export default function SearchBar({ value, onChange }) {
   return (
-    <div className="search-container">
-      <FaSearch className="search-icon" />
+    <div className="search-bar">
       <input
         type="text"
         placeholder="Search anime or movies..."

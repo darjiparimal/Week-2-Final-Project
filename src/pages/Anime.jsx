@@ -1,33 +1,31 @@
 import { useState } from "react";
-import { animeList } from "../data/animeData";
+import SearchBar from "../components/SearchBar";
 import ItemCard from "../components/ItemCard";
-import VideoModal from "../components/VideoModal";
+import { animeList } from "../data/animeData";
 
-export default function Anime({ searchQuery, watchlist, toggleWatchlist }) {
-  const [activeVideo, setActiveVideo] = useState(null);
+export default function Anime({ watchlist, toggleWatchlist }) {
+  const [search, setSearch] = useState("");
 
-  const filteredAnime = animeList.filter(anime =>
-    anime.title.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredAnime = animeList.filter((anime) =>
+    anime.title.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
-    <>
+    <div className="main-content">
+      <h1>Anime</h1>
+
+      <SearchBar value={search} onChange={setSearch} />
+
       <div className="grid">
-        {filteredAnime.map(anime => (
+        {filteredAnime.map((anime) => (
           <ItemCard
             key={anime.id}
             item={anime}
             watchlist={watchlist}
             toggleWatchlist={toggleWatchlist}
-            onPlay={(item) => item.video && setActiveVideo(item.video)}
           />
         ))}
       </div>
-
-      <VideoModal
-        videoUrl={activeVideo}
-        close={() => setActiveVideo(null)}
-      />
-    </>
+    </div>
   );
 }

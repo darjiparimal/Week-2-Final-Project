@@ -1,14 +1,23 @@
+import inception from "../assets/Movie/Inception-Movie.jpg";
+import interstellar from "../assets/Movie/Intersteller-Movie.jpg";
+
 export const movies = [
   {
-    id: 1,
+    id: "inception",
     title: "Inception",
-    image: "https://image.tmdb.org/t/p/w500/xyz.jpg",
-    video: "https://www.youtube.com/embed/YoHD9XEInc0"
+    image: inception,
+    description:
+      "A thief who steals corporate secrets through dream-sharing technology.",
+    rating: 8.8,
+    video: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
   {
-    id: 2,
+    id: "interstellar",
     title: "Interstellar",
-    image: "https://image.tmdb.org/t/p/w500/abc.jpg",
-    video: "https://www.youtube.com/embed/zSWdZVtXT7E"
+    image: interstellar,
+    description:
+      "A team of explorers travel through a wormhole in space.",
+    rating: 8.6,
+    video: "https://www.w3schools.com/html/movie.mp4"
   }
 ];

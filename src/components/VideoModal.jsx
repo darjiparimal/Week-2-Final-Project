@@ -1,18 +1,15 @@
-export default function VideoModal({ videoUrl, close }) {
-  if (!videoUrl) return null;
-
+// src/components/VideoModal.jsx
+export default function VideoModal({ video, onClose }) {
   return (
     <div className="video-modal">
-      <div className="video-content">
-        <button className="close-btn" onClick={close}>✕</button>
+      <div className="modal-content">
+        <video controls autoPlay>
+          <source src={video} type="video/mp4" />
+        </video>
 
-        <iframe
-          src={videoUrl}
-          title="Video Player"
-          frameBorder="0"
-          allow="autoplay; fullscreen"
-          allowFullScreen
-        ></iframe>
+        <button className="close-btn" onClick={onClose}>
+          Close Player
+        </button>
       </div>
     </div>
   );

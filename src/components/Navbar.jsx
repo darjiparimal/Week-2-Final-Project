@@ -1,23 +1,24 @@
-import React from "react";
-import { FaBars, FaSearch } from "react-icons/fa";
-
-export default function Navbar({ section, setSection, toggleSidebar, searchQuery, setSearchQuery }) {
+export default function Navbar({
+  section,
+  setSection,
+  toggleSidebar,
+  searchQuery,
+  setSearchQuery
+}) {
   return (
     <nav className="neon-nav">
-      {/* LEFT */}
       <div className="nav-left">
         <button className="menu-btn" onClick={toggleSidebar}>
-          <FaBars />
+          ☰
         </button>
 
-        <h2 className="brand" onClick={() => setSection("Home")}>
-          <span>ANIME</span> WORLD
-        </h2>
+        <div className="brand" onClick={() => setSection("Home")}>
+          Anime<span>World</span>
+        </div>
       </div>
 
-      {/* CENTER SEARCH */}
       <div className="nav-search">
-        <FaSearch className="search-icon" />
+        <span className="search-icon">🔍</span>
         <input
           type="text"
           placeholder="Search anime or movies..."
@@ -26,17 +27,25 @@ export default function Navbar({ section, setSection, toggleSidebar, searchQuery
         />
       </div>
 
-      {/* RIGHT BUTTONS */}
       <div className="nav-right">
-        {["Home", "Anime", "Movies", "Watchlist"].map(btn => (
-          <button
-            key={btn}
-            className={`nav-btn ${section === btn ? "active" : ""}`}
-            onClick={() => setSection(btn)}
-          >
-            {btn}
-          </button>
-        ))}
+        <button
+          className={`nav-btn ${section === "Anime" ? "active" : ""}`}
+          onClick={() => setSection("Anime")}
+        >
+          Anime
+        </button>
+        <button
+          className={`nav-btn ${section === "Movies" ? "active" : ""}`}
+          onClick={() => setSection("Movies")}
+        >
+          Movies
+        </button>
+        <button
+          className={`nav-btn ${section === "Watchlist" ? "active" : ""}`}
+          onClick={() => setSection("Watchlist")}
+        >
+          Watchlist
+        </button>
       </div>
     </nav>
   );

@@ -13,28 +13,21 @@ export default function App() {
   const [watchlist, setWatchlist] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Load watchlist from localStorage
   useEffect(() => {
     const saved = localStorage.getItem("watchlist");
-    if (saved) {
-      setWatchlist(JSON.parse(saved));
-    }
+    if (saved) setWatchlist(JSON.parse(saved));
   }, []);
 
-  // Save watchlist to localStorage
   useEffect(() => {
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
   }, [watchlist]);
 
-  // Toggle add/remove
   function toggleWatchlist(item) {
-    setWatchlist(prev => {
-      const exists = prev.some(i => i.id === item.id);
-      if (exists) {
-        return prev.filter(i => i.id !== item.id);
-      }
-      return [...prev, item];
-    });
+    setWatchlist((prev) =>
+      prev.some((i) => i.id === item.id)
+        ? prev.filter((i) => i.id !== item.id)
+        : [...prev, item]
+    );
   }
 
   return (
@@ -57,6 +50,7 @@ export default function App() {
       <main className="main-content">
         {section === "Home" && (
           <Home
+            searchQuery={searchQuery}   // ✅ FIX
             watchlist={watchlist}
             toggleWatchlist={toggleWatchlist}
           />

@@ -1,21 +1,17 @@
-import Rating from "./Rating";
-
 export default function ItemCard({
   item,
   watchlist,
   toggleWatchlist,
-  onDetails
+  onOpen
 }) {
-  const isSaved = watchlist?.some(i => i.id === item.id);
+  const isSaved = watchlist.some((w) => w.id === item.id);
 
   return (
-    <div className="item-card" onClick={onDetails}>
+    <div className="item-card" onClick={onOpen}>
       <img src={item.image} alt={item.title} />
 
       <div className="card-overlay">
         <h5>{item.title}</h5>
-
-        <Rating value={item.rating} />
 
         <button
           className={`watch-btn ${isSaved ? "saved" : ""}`}
@@ -24,7 +20,7 @@ export default function ItemCard({
             toggleWatchlist(item);
           }}
         >
-          {isSaved ? "✔ In Watchlist" : "+ Add to Watchlist"}
+          {isSaved ? "✓ Saved" : "+ Watchlist"}
         </button>
       </div>
     </div>
