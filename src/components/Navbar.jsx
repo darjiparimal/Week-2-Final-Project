@@ -1,3 +1,5 @@
+import logo from "../assets/logo.jpg";
+
 export default function Navbar({
   section,
   setSection,
@@ -12,11 +14,16 @@ export default function Navbar({
           ☰
         </button>
 
-        <div className="brand" onClick={() => setSection("Home")}>
-          Anime<span>World</span>
+        {/* ✅ LOGO + BRAND */}
+        <div className="brand-logo" onClick={() => setSection("Home")}>
+          <img src={logo} alt="AnimeWorld Logo" />
+          <span className="brand-text">
+            Anime<span>World</span>
+          </span>
         </div>
       </div>
 
+      {/* SEARCH */}
       <div className="nav-search">
         <span className="search-icon">🔍</span>
         <input
@@ -27,6 +34,7 @@ export default function Navbar({
         />
       </div>
 
+      {/* RIGHT BUTTONS */}
       <div className="nav-right">
         <button
           className={`nav-btn ${section === "Anime" ? "active" : ""}`}
