@@ -16,7 +16,7 @@ import chainsawman from "../assets/anime/chainsawman.jpg";
 import spyxfamily from "../assets/anime/spyxfamily.webp";
 import sololeveling from "../assets/anime/sololeveling.jpg";
 
-export const animeData = [
+export const animeList = [
   {
     id: "naruto",
     type: "anime",
