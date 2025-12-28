@@ -15,10 +15,12 @@ export default function Navbar({
         </button>
 
         {/* LOGO + BRAND */}
-        <div className="brand" onClick={() => setSection("Home")}>
-          <img src={logo} alt="Logo" className="brand-logo" />
-          Anime<span>World</span>
-        </div>
+        <div className="brand">
+  <img src={logo} alt="AnimeWorld Logo" className="brand-logo" />
+  <h1 className="brand-text">
+    Anime<span>World</span>
+  </h1>
+</div>
       </div>
 
       <div className="nav-search">
