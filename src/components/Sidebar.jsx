@@ -1,19 +1,40 @@
 export default function Sidebar({ open, closeSidebar, setSection, section }) {
+  function handleNavigate(page) {
+    setSection(page);
+    closeSidebar(); // ✅ VERY IMPORTANT
+  }
+
   return (
-    <>
-      {/* Overlay */}
-      {open && <div className="overlay" onClick={closeSidebar}></div>}
+    <div className={`sidebar ${open ? "open" : ""}`}>
+      <button className="close-btn" onClick={closeSidebar}>✖</button>
 
-      <aside className={`sidebar ${open ? "open" : ""}`}>
-        <h3 className="side-title">Menu</h3>
+      <button
+        className={section === "Home" ? "active" : ""}
+        onClick={() => handleNavigate("Home")}
+      >
+        Home
+      </button>
 
-        <ul>
-          <li className={section==="Home"?"active":""} onClick={() => {setSection("Home"); closeSidebar();}}>Home</li>
-          <li className={section==="Anime"?"active":""} onClick={() => {setSection("Anime"); closeSidebar();}}>Anime</li>
-          <li className={section==="Movies"?"active":""} onClick={() => {setSection("Movies"); closeSidebar();}}>Movies</li>
-          <li className={section==="Watchlist"?"active":""} onClick={() => {setSection("Watchlist"); closeSidebar();}}>Watchlist</li>
-        </ul>
-      </aside>
-    </>
+      <button
+        className={section === "Anime" ? "active" : ""}
+        onClick={() => handleNavigate("Anime")}
+      >
+        Anime
+      </button>
+
+      <button
+        className={section === "Movies" ? "active" : ""}
+        onClick={() => handleNavigate("Movies")}
+      >
+        Movies
+      </button>
+
+      <button
+        className={section === "Watchlist" ? "active" : ""}
+        onClick={() => handleNavigate("Watchlist")}
+      >
+        Watchlist
+      </button>
+    </div>
   );
 }

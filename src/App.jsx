@@ -2,32 +2,52 @@ import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
+
 import Home from "./pages/Home";
 import Anime from "./pages/Anime";
 import Movies from "./pages/Movies";
 import Watchlist from "./pages/Watchlist";
+import Login from "./pages/Login";
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [section, setSection] = useState("Home");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [watchlist, setWatchlist] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
+  /* 🔐 CHECK LOGIN STATUS */
   useEffect(() => {
-    const saved = localStorage.getItem("watchlist");
-    if (saved) setWatchlist(JSON.parse(saved));
+    if (localStorage.getItem("isLoggedIn") === "true") {
+      setIsLoggedIn(true);
+    }
   }, []);
 
+  /* 💾 LOAD WATCHLIST */
+  useEffect(() => {
+    const saved = localStorage.getItem("watchlist");
+    if (saved) {
+      setWatchlist(JSON.parse(saved));
+    }
+  }, []);
+
+  /* 💾 SAVE WATCHLIST */
   useEffect(() => {
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
   }, [watchlist]);
 
+  /* ⭐ ADD / REMOVE FROM WATCHLIST */
   function toggleWatchlist(item) {
     setWatchlist((prev) =>
       prev.some((i) => i.id === item.id)
         ? prev.filter((i) => i.id !== item.id)
         : [...prev, item]
     );
+  }
+
+  /* 🔒 SHOW LOGIN PAGE */
+  if (!isLoggedIn) {
+    return <Login onLogin={() => setIsLoggedIn(true)} />;
   }
 
   return (
@@ -50,7 +70,7 @@ export default function App() {
       <main className="main-content">
         {section === "Home" && (
           <Home
-            searchQuery={searchQuery}   // ✅ FIX
+            searchQuery={searchQuery}
             watchlist={watchlist}
             toggleWatchlist={toggleWatchlist}
           />
