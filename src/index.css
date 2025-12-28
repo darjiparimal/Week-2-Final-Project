@@ -35,18 +35,16 @@ body {
 
 /* LEFT */
 /* ================= LOGO + BRAND ================= */
-.brand-logo {
+.brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  cursor: pointer;
 }
 
-/* ROUND LOGO */
-.brand-logo img {
+.brand-logo {
   width: 38px;
   height: 38px;
-  border-radius: 50%;          /* 🔥 MAKES IT ROUND */
+  border-radius: 50%;
   object-fit: cover;
   border: 0px solid #ff0000;
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
