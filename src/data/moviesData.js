@@ -1,7 +1,7 @@
-import inception from "../assets/Movie/Inception-Movie.jpg";
-import interstellar from "../assets/Movie/Intersteller-Movie.jpg";
+import inception from "../assets/movie/Inception-Movie.jpg";
+import interstellar from "../assets/movie/Intersteller-Movie.jpg";
 
-export const movies = [
+export const movie = [
   {
     id: "inception",
     title: "Inception",
