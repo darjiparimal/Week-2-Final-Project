@@ -1,11 +1,13 @@
-import inception from "../assets/movie/Inception-Movie.jpg";
-import interstellar from "../assets/movie/Intersteller-Movie.jpg";
+// src/data/moviesData.js
+import inceptionImg from "../assets/movies/inception.jpg";
+import interstellarImg from "../assets/movies/interstellar.jpg";
 
-export const movie = [
+export const movies = [
   {
     id: "inception",
+    type: "movie",
     title: "Inception",
-    image: inception,
+    image: inceptionImg,
     description:
       "A thief who steals corporate secrets through dream-sharing technology.",
     rating: 8.8,
@@ -13,8 +15,9 @@ export const movie = [
   },
   {
     id: "interstellar",
+    type: "movie",
     title: "Interstellar",
-    image: interstellar,
+    image: interstellarImg,
     description:
       "A team of explorers travel through a wormhole in space.",
     rating: 8.6,
